@@ -1,1 +1,98 @@
-{}
+﻿{
+  "name": "GrantBridge",
+  "description": "AI-Powered Grant and Funding Finder for Startups — IBM Granite · LangGraph · ChromaDB · Streamlit",
+  "keywords": ["ai", "grants", "funding", "startups", "ibm-granite", "watsonx", "langchain", "chromadb", "rag", "multi-agent"],
+  "website": "https://github.com/GauranshSharma21/Grant-Bridge",
+  "repository": "https://github.com/GauranshSharma21/Grant-Bridge",
+  "logo": "https://raw.githubusercontent.com/GauranshSharma21/Grant-Bridge/main/assets/logo.png",
+  "success_url": "/",
+  "scripts": {
+    "start": "streamlit run app.py --server.port $PORT --server.headless true --browser.gatherUsageStats false"
+  },
+  "env": {
+    "IBM_API_KEY": {
+      "description": "IBM WatsonX AI API Key from cloud.ibm.com",
+      "required": true
+    },
+    "IBM_PROJECT_ID": {
+      "description": "IBM WatsonX AI Project ID",
+      "required": true
+    },
+    "IBM_WATSONX_URL": {
+      "description": "IBM WatsonX AI endpoint URL",
+      "value": "https://us-south.ml.cloud.ibm.com",
+      "required": true
+    },
+    "GRANITE_MODEL_ID": {
+      "description": "IBM Granite model ID available in your WatsonX project",
+      "value": "ibm/granite-4-h-small",
+      "required": false
+    },
+    "GRANITE_EMBEDDING_MODEL": {
+      "description": "IBM embedding model ID",
+      "value": "ibm/slate-125m-english-rtrvr-v2",
+      "required": false
+    },
+    "CHROMA_PERSIST_DIR": {
+      "description": "Path to ChromaDB persistent storage",
+      "value": "./data/chroma_db",
+      "required": false
+    },
+    "CHROMA_COLLECTION_NAME": {
+      "description": "ChromaDB collection name for grant knowledge base",
+      "value": "grant_knowledge_base",
+      "required": false
+    },
+    "APP_SECRET_KEY": {
+      "description": "Secret key for JWT and session security",
+      "generator": "secret",
+      "required": false
+    },
+    "JWT_ALGORITHM": {
+      "description": "JWT signing algorithm",
+      "value": "HS256",
+      "required": false
+    },
+    "MAX_API_CALLS_PER_MINUTE": {
+      "description": "Rate limit for external API calls",
+      "value": "20",
+      "required": false
+    },
+    "MAX_TOKENS_PER_REQUEST": {
+      "description": "Maximum tokens per IBM Granite request",
+      "value": "1024",
+      "required": false
+    },
+    "MAX_AGENT_ITERATIONS": {
+      "description": "Maximum agent iterations before timeout",
+      "value": "10",
+      "required": false
+    },
+    "MAX_EXECUTION_SECONDS": {
+      "description": "Maximum pipeline execution time in seconds",
+      "value": "120",
+      "required": false
+    },
+    "LOG_LEVEL": {
+      "description": "Application log level",
+      "value": "INFO",
+      "required": false
+    },
+    "ENABLE_AUDIT_TRAIL": {
+      "description": "Enable audit trail for guardrail actions",
+      "value": "True",
+      "required": false
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1
+    }
+  },
+  "buildpacks": [
+    {
+      "url": "heroku/python"
+    }
+  ],
+  "stack": "heroku-22"
+}
